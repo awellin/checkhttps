@@ -1,0 +1,19 @@
+# Use postgres/example user/password credentials
+version: '2.4'
+
+services:
+  checkhttps:
+    image: checkhttps
+    container_name: lqgen.checkhttps
+    networks: ["lqgen"]
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: .
+    environment:
+      url: https://api_umc.labquest.ru/umc_test6/ws/ws1.1cws?wsdl
+      debug: all
+
+
+networks:
+  lqgen:
+    driver: "bridge"
